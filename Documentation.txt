@@ -1,0 +1,26 @@
+
+step to GPIO interrupr
+
+	Enable periphearial in SYSCTRL
+	Enable digital IO functions by writing '1's to DEN register
+	Set direction by writing '1'(output)/'0'(input) to DIR register
+	
+	Enable pull-up/down resistor if necesary by writing '1's  to GPIOPUR/GPIOPDR register
+	
+	Set type of interrupr event '0'(edge)/'1'(level) GPIOIS
+	Set edge type event  '0'(one side edge)/'1'(both edeges) GPIOIBE
+  	Set edge direction/level   '0'(falling edge/low level)/'1'(rising edge/high level)  in GPIOIEV
+	Clear the interrupt mask  '0'(int disabled)/'1'(int enabled)  in    GPIOIM
+	
+	enable the interrupts for the peripherial GPIOx by calling the function: 
+	NVIC_EnableIRQ(GPIOx_IRQn);
+	
+    define the interruop hadler
+    void GPIOx_Handler(void){
+	//Clear the edge trigered interrupts if the necesary	
+	
+	// user code below this
+	
+	
+	}	
+	write '1 ' to clear edge trigered interrupt GPIOICR
